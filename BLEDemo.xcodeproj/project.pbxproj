@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		785098841D365ADD00976091 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785098831D365ADD00976091 /* AppDelegate.swift */; };
-		785098861D365ADD00976091 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785098851D365ADD00976091 /* ViewController.swift */; };
+		785098861D365ADD00976091 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785098851D365ADD00976091 /* MainViewController.swift */; };
 		785098891D365ADD00976091 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785098871D365ADD00976091 /* Main.storyboard */; };
 		7850988B1D365ADD00976091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7850988A1D365ADD00976091 /* Assets.xcassets */; };
 		7850988E1D365ADD00976091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850988C1D365ADD00976091 /* LaunchScreen.storyboard */; };
+		785098961D365E8E00976091 /* ScanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785098951D365E8E00976091 /* ScanTableViewController.swift */; };
+		785098991D36607500976091 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785098981D36607500976091 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		785098801D365ADD00976091 /* BLEDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLEDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785098831D365ADD00976091 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		785098851D365ADD00976091 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		785098851D365ADD00976091 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		785098881D365ADD00976091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7850988A1D365ADD00976091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7850988D1D365ADD00976091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7850988F1D365ADD00976091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		785098951D365E8E00976091 /* ScanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanTableViewController.swift; sourceTree = "<group>"; };
+		785098981D36607500976091 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785098991D36607500976091 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,7 @@
 			children = (
 				785098821D365ADD00976091 /* BLEDemo */,
 				785098811D365ADD00976091 /* Products */,
+				785098971D36607500976091 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +61,22 @@
 			isa = PBXGroup;
 			children = (
 				785098831D365ADD00976091 /* AppDelegate.swift */,
-				785098851D365ADD00976091 /* ViewController.swift */,
+				785098851D365ADD00976091 /* MainViewController.swift */,
+				785098951D365E8E00976091 /* ScanTableViewController.swift */,
 				785098871D365ADD00976091 /* Main.storyboard */,
 				7850988A1D365ADD00976091 /* Assets.xcassets */,
 				7850988C1D365ADD00976091 /* LaunchScreen.storyboard */,
 				7850988F1D365ADD00976091 /* Info.plist */,
 			);
 			path = BLEDemo;
+			sourceTree = "<group>";
+		};
+		785098971D36607500976091 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				785098981D36607500976091 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,7 +113,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = FX9SB387T5;
 						DevelopmentTeamName = "AnalogFolk Ltd";
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -138,8 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785098861D365ADD00976091 /* ViewController.swift in Sources */,
+				785098861D365ADD00976091 /* MainViewController.swift in Sources */,
 				785098841D365ADD00976091 /* AppDelegate.swift in Sources */,
+				785098961D365E8E00976091 /* ScanTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +313,7 @@
 				785098941D365ADD00976091 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

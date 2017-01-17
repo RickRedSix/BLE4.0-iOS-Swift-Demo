@@ -35,12 +35,12 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
         
         if (mainPeripheral == nil) {
             rightButton.setTitle("Scan", for: [])
-            rightButton.setTitleColor(UIColor.blue(), for: [])
+            rightButton.setTitleColor(UIColor.blue, for: [])
             rightButton.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 60, height: 30))
             rightButton.addTarget(self, action: #selector(self.scanButtonPressed), for: .touchUpInside)
         } else {
             rightButton.setTitle("Disconnect", for: [])
-            rightButton.setTitleColor(UIColor.blue(), for: [])
+            rightButton.setTitleColor(UIColor.blue, for: [])
             rightButton.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 30))
             rightButton.addTarget(self, action: #selector(self.disconnectButtonPressed), for: .touchUpInside)
         }
@@ -51,10 +51,10 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "scan-segue") {
-            let scanController : ScanTableViewController = segue.destinationViewController as! ScanTableViewController
+            let scanController : ScanTableViewController = segue.destination as! ScanTableViewController
             
             //set the manager's delegate to the scan view so it can call relevant connection methods
             manager?.delegate = scanController
@@ -85,8 +85,8 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
         }
     }
     
-    // MARK: - CBCentralManagerDelegate Methods
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+    // MARK: - CBCentralManagerDelegate Methods    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         mainPeripheral = nil
         customiseNavigationBar()
         print("Disconnected" + peripheral.name!)
@@ -98,7 +98,7 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
     }
     
     // MARK: CBPeripheralDelegate Methods
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         
         for service in peripheral.services! {
             
@@ -123,7 +123,7 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
 
         //get device name
         if (service.uuid.uuidString == "1800") {
@@ -174,21 +174,21 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
         
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
         
         if (characteristic.uuid.uuidString == "2A00") {
             //value for device name recieved
             let deviceName = characteristic.value
-            print(deviceName)
+            print(deviceName ?? "No Device Name")
         } else if (characteristic.uuid.uuidString == "2A29") {
             //value for manufacturer name recieved
             let manufacturerName = characteristic.value
-            print(manufacturerName)
+            print(manufacturerName ?? "No Manufacturer Name")
         } else if (characteristic.uuid.uuidString == "2A23") {
             //value for system ID recieved
             let systemID = characteristic.value
-            print(systemID)
+            print(systemID ?? "No System ID")
         } else if (characteristic.uuid.uuidString == BLECharacteristic) {
             //data recieved
             if(characteristic.value != nil) {

@@ -54,7 +54,7 @@ class ScanTableViewController: UITableViewController, CBCentralManagerDelegate {
         manager?.scanForPeripherals(withServices: [CBUUID.init(string: parentView!.BLEService)], options: nil)
         
         //stop scanning after 3 seconds
-        DispatchQueue.main.after(when: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.stopScanForBLEDevices()
         }
     }
@@ -95,8 +95,8 @@ class ScanTableViewController: UITableViewController, CBCentralManagerDelegate {
         print("Connected to " +  peripheral.name!)
     }
     
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: NSError?) {
-        print(error)
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        print(error!)
     }
     
 }

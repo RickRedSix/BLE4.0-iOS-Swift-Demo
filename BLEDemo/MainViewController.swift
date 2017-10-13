@@ -65,11 +65,11 @@ class MainViewController: UIViewController, CBCentralManagerDelegate, CBPeripher
     }
     
     // MARK: Button Methods
-    func scanButtonPressed() {
+    @objc func scanButtonPressed() {
         performSegue(withIdentifier: "scan-segue", sender: nil)
     }
     
-    func disconnectButtonPressed() {
+    @objc func disconnectButtonPressed() {
         //this will call didDisconnectPeripheral, but if any other apps are using the device it will not immediately disconnect
         manager?.cancelPeripheralConnection(mainPeripheral!)
     }
